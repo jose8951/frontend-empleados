@@ -1,0 +1,18 @@
+<div class="container mt-5">
+  <div class="card mx-auto shadow" style="max-width: 400px;">
+    <div class="card-body">
+      <h3 class="text-center mb-4">Registro</h3>
+      <form (ngSubmit)="enviarFormulario()">
+        <div class="mb-3">
+          <label class="form-label">Nombre</label>
+          <input type="text" name="nombre" [(ngModel)]="usuario.nombre" class="form-control" required>
+        </div>
+        <div class="mb-3">
+          <label class="form-label">Email</label>
+          <input type="email" name="email" [(ngModel)]="usuario.email" class="form-control" required>
+        </div>
+        <button type="submit" class="btn btn-primary w-100">Guardar en MySQL</button>
+      </form>
+    </div>
+  </div>
+</div>

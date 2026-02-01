@@ -1,0 +1,75 @@
+<div class="card mb-4 p-3" style="background-color: #f8f9fa; border-radius: 10px; border: 1px solid #ddd">
+  <h3 class="mb-3">
+    {{ idSeleccionado ? 'Modificar Empleado ID: ' + idSeleccionado : 'Registrar Nuevo Empleado' }}
+  </h3>
+
+  <form [formGroup]="empleadoForm" (ngSubmit)="guardarEmpleado()">
+    <div class="row g-2">
+      <div class="col-md-3">
+        <input type="text" formControlName="nombre" placeholder="Nombre" class="form-control" />
+      </div>
+      <div class="col-md-3">
+        <input type="text" formControlName="apellido" placeholder="Apellido" class="form-control" />
+      </div>
+      <div class="col-md-2">
+        <input type="date" formControlName="fecha_contrato" class="form-control" />
+      </div>
+      <div class="col-md-2">
+        <input type="text" formControlName="puesto" placeholder="Puesto" class="form-control" />
+      </div>
+      <div class="col-md-2 d-flex gap-1">
+        <button type="submit" [disabled]="empleadoForm.invalid" 
+                [class]="idSeleccionado ? 'btn btn-warning w-100' : 'btn btn-primary w-100'">
+          {{ idSeleccionado ? 'Actualizar' : 'Insertar' }}
+        </button>
+
+        @if(idSeleccionado) {
+        <button type="button" (click)="finalizarOperacion()" class="btn btn-secondary">
+          Cancelar
+        </button>
+        }
+      </div>
+    </div>
+  </form>
+</div>
+
+<hr />
+
+<h2>Listado de Empleados</h2>
+<table class="table table-hover mt-3">
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Nombre</th>
+      <th>Apellido</th>
+      <th>Fecha Contrato</th>
+      <th>Puesto</th>
+      <th class="text-center">Acciones</th>
+    </tr>
+  </thead>
+  <tbody>
+    @for (empleado of listaEmpleados; track empleado.id) {
+    <tr>
+      <td>{{ empleado.id }}</td>
+      <td>{{ empleado.nombre }}</td>
+      <td>{{ empleado.apellido }}</td>
+      <td>{{ empleado.fecha_contrato }}</td>
+      <td>{{ empleado.puesto }}</td>
+      <td class="text-center">
+        <button class="btn btn-warning btn-sm me-2" (click)="seleccionarEmpleado(empleado)">
+          ✏️ Editar
+        </button>
+        <button class="btn btn-danger btn-sm" (click)="eliminarEmpleado(empleado.id!)">
+          🗑️ Eliminar
+        </button>
+      </td>
+    </tr>
+    } @empty {
+    <tr>
+      <td colspan="6" class="text-center text-muted">
+        No hay empleados registrados o cargando datos...
+      </td>
+    </tr>
+    }
+  </tbody>
+</table>
