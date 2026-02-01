@@ -7,6 +7,6 @@ export const routes: Routes = [
  {path:'inicio',component:InicioComponent},
  {path:'datos',component:DatosComponent},
  {path:'listado',component:ListadoComponent},
- {path:'',redirectTo:'/inicio',pathMatch:'full'}
-
+ // Cambiamos la redirección de 'inicio' a 'listado'
+ {path:'',redirectTo:'/listado',pathMatch:'full'} 
 ];
