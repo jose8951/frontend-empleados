@@ -66,6 +66,8 @@ Este proyecto es una aplicación Full Stack que permite gestionar empleados, con
 ## 🚀 Enlace del Proyecto
 - **URL en vivo:** [https://frontend-empleados-q5cq.onrender.com](https://frontend-empleados-q5cq.onrender.com)
 
+## Nueva Versión (V2): https://frontend-empleados-v2.onrender.com
+
 ## 🛠️ Tecnologías Utilizadas
 * **Frontend:** Angular 18 (Desplegado en **Render**).
 * **Backend:** Scripts PHP (Alojados en **Hostinger**).
